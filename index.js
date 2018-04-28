@@ -247,3 +247,20 @@ function fibonacci(pos) {
 }
 
 fibonacci(8)
+
+// O(n)
+// Utilizing memoization.
+function fibMemo(i, cache) {
+  cache = cache || []
+  if (cache[i]) {
+    return cache[i]
+  } else {
+    if (i < 3) return 1
+    else {
+      cache[i] = fibMemo(i - 1, cache) + fibMemo(i - 2, cache)
+    }
+  }
+  return cache[i]
+}
+
+fibMemo(50)
