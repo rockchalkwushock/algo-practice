@@ -44,3 +44,25 @@ harmlessRansomNote(
   'this is a secret note for you from a secret admirer',
   'puerto rico is a place of great wonder and excitement it has many secret waterfall locations that i am an admirer of ou must hike quite a distance to find the secret places as they are far from populated areas but it is worth the effort a tip I have for you is to go early in the morning when it is not so hot out also note that you mst wear hiking boots this is one of the best places I have ever visited'
 )
+
+// Method not using Regex.
+// Must remove all characters that are not letters.
+// Must make all characters lowercase for comparison.
+function isPalindrome(string) {
+  string = string.toLowerCase()
+  var charArr = string.split('')
+  var validChars = 'abcdefghijklmnopqrstuvwxyz'.split('')
+
+  var lettersArr = []
+  charArr.forEach(char => {
+    if (validChars.indexOf(char) > -1) lettersArr.push(char)
+  })
+
+  if (lettersArr.join('') === lettersArr.reverse().join('')) {
+    return true
+  } else {
+    return false
+  }
+}
+
+isPalindrome('race car')
