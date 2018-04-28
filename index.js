@@ -214,3 +214,25 @@ function twoSum(numArray, sum) {
 }
 
 twoSum([40, 11, 19, 17, -12], 28)
+
+// O(log n)
+function binarySearch(arr, key) {
+  var midIndex = Math.floor(arr.length / 2)
+  var midElement = arr[midIndex]
+
+  if (midElement === key) {
+    // Base Case
+    return true
+  } else if (midElement < key && arr.length > 1) {
+    // Recursive case for top 1/2 of array.
+    return binarySearch(arr.splice(midIndex, arr.length), key)
+  } else if (midElement > key && arr.length > 1) {
+    // Recursive case for bottom half of array.
+    return binarySearch(arr.splice(0, midIndex), key)
+  } else {
+    // Does not exist in tree.
+    return false
+  }
+}
+
+binarySearch([5, 7, 12, 16, 36, 39, 42, 56, 71], 56)
