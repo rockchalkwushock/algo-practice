@@ -305,3 +305,35 @@ function bubbleSort(arr) {
 }
 
 bubbleSort([5, 3, 8, 2, 1, 4])
+
+function mergeSort(arr) {
+  // Base Case
+  if (arr.length < 2) return arr
+  // Recursive Case
+  var midIndex = Math.floor(arr.length / 2)
+  var firstHalf = arr.slice(0, midIndex)
+  var lastHalf = arr.slice(midIndex)
+
+  return merge(mergeSort(firstHalf), mergeSort(lastHalf))
+}
+
+function merge(arr1, arr2) {
+  var result = []
+  while (arr1.length && arr2.length) {
+    var minElement
+    if (arr1[0] < arr2[0]) {
+      minElement = arr1.shift()
+    } else {
+      minElement = arr2.shift()
+    }
+    result.push(minElement)
+  }
+  if (arr1.length) {
+    result = result.concat(arr1)
+  } else {
+    result = result.concat(arr2)
+  }
+  return result
+}
+
+mergeSort([6000, 34, 203, 3, 746, 200, 984, 198, 764, 1, 8, 1])
