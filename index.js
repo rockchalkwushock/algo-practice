@@ -98,3 +98,29 @@ function caesarCipher(str, num) {
 }
 
 caesarCipher('zoo keeper', 2)
+
+// Can't use array.reverse()
+function reverseWords(str) {
+  var wordsArr = str.split(' ')
+  var reversedArr = []
+
+  // for (var i = 0; i < wordsArr.length; i++) {
+  //   var word = wordsArr[i]
+  //   console.log(word)
+  //   reversedArr.push(word.split('').reverse().join(''))
+  // }
+  // return reversedArr.join(' ')
+
+  wordsArr.forEach(word => {
+    var reversedWord = ''
+    // Use for loop to run backwards through characters of word.
+    for (var i = word.length - 1; i >= 0; i--) {
+      reversedWord += word[i]
+    }
+    reversedArr.push(reversedWord)
+  })
+
+  return reversedArr.join(' ')
+}
+
+reverseWords('this is a string of words')
