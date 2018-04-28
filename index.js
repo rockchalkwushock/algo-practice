@@ -136,3 +136,62 @@ function reverseArrayInPlace(arr) {
 }
 
 reverseArrayInPlace([1, 2, 3, 4, 5])
+
+function getMean(arr) {
+  var sum = 0
+  arr.forEach(val => {
+    sum += val
+  })
+  var mean = sum / arr.length
+  return mean
+}
+
+function getMedian(arr) {
+  arr.sort((a, b) => a - b)
+  var median
+
+  if (arr.length % 2 !== 0) {
+    median = arr[Math.floor(arr.length / 2)]
+  } else {
+    var mid1 = arr[arr.length / 2 - 1]
+    var mid2 = arr[arr.length / 2]
+
+    median = (mid1 + mid2) / 2
+  }
+  return median
+}
+
+function getMode(arr) {
+  var mode = {}
+
+  arr.forEach(num => {
+    if (!mode[num]) mode[num] = 0
+    mode[num]++
+  })
+
+  var maxFreq = 0
+  var modes = []
+
+  for (var num in mode) {
+    if (mode[num] > maxFreq) {
+      modes = [num]
+      maxFreq = mode[num]
+    } else if (mode[num] === maxFreq) {
+      modes.push(num)
+    }
+  }
+
+  if (modes.length === Object.keys(mode).length) modes = []
+
+  return modes
+}
+
+function meanMedianMode(arr) {
+  return {
+    mean: getMean(arr),
+    median: getMedian(arr),
+    mode: getMode(arr)
+  }
+}
+
+meanMedianMode([9, 10, 23, 10, 23, 9])
