@@ -66,3 +66,35 @@ function isPalindrome(string) {
 }
 
 isPalindrome('race car')
+
+function caesarCipher(str, num) {
+  // Do this to have values we can work with.
+  num = num % 26
+  var lowerStr = str.toLowerCase()
+  var alpha = 'abcdefghijklmnopqrstuvwxyz'.split('')
+  var newStr = ''
+
+  for (var i = 0; i < lowerStr.length; i++) {
+    var currLetter = lowerStr[i]
+    if (currLetter === ' ') {
+      newStr += currLetter
+      continue
+    }
+    var currIndex = alpha.indexOf(currLetter)
+    var newIndex = currIndex + num
+    // We are over the length of the alphabet.
+    if (newIndex > 25) newIndex = newIndex - 26
+    // We are under the length of the alphabet.
+    if (newIndex < 0) newIndex = 26 + newIndex
+    // Make the char UpperCase if it was originally so.
+    if (str[i] === str[i].toUpperCase()) {
+      newStr += alpha[newIndex].toUpperCase()
+      // Else just add the character to the new string.
+    } else {
+      newStr += alpha[newIndex]
+    }
+  }
+  return newStr
+}
+
+caesarCipher('zoo keeper', 2)
