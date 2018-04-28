@@ -195,3 +195,22 @@ function meanMedianMode(arr) {
 }
 
 meanMedianMode([9, 10, 23, 10, 23, 9])
+
+// This solution runs as O(n)
+function twoSum(numArray, sum) {
+  var pairs = []
+  var hashtable = []
+
+  for (var i = 0; i < numArray.length; i++) {
+    var currNum = numArray[i]
+    var counterPart = sum - currNum
+    if (hashtable.indexOf(counterPart) !== -1) {
+      pairs.push([currNum, counterPart])
+    }
+    hashtable.push(currNum)
+  }
+  // Return an array of 2 pair arrays.
+  return pairs
+}
+
+twoSum([40, 11, 19, 17, -12], 28)
