@@ -236,3 +236,14 @@ function binarySearch(arr, key) {
 }
 
 binarySearch([5, 7, 12, 16, 36, 39, 42, 56, 71], 56)
+
+// O(2^n)
+function fibonacci(pos) {
+  if (pos < 3) {
+    return 1
+  } else {
+    return fibonacci(pos - 1) + fibonacci(pos - 2)
+  }
+}
+
+fibonacci(8)
