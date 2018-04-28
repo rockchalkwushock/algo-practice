@@ -337,3 +337,28 @@ function merge(arr1, arr2) {
 }
 
 mergeSort([6000, 34, 203, 3, 746, 200, 984, 198, 764, 1, 8, 1])
+
+function maxStockProfit(arr) {
+  var maxProfit = -1
+  var buyPrice = 0
+  var sellPrice = 0
+
+  var changeBuyPrice = true
+
+  for (var i = 0; i < arr.length; i++) {
+    if (changeBuyPrice) {
+      buyPrice = arr[i]
+    }
+    sellPrice = arr[i + 1]
+    if (sellPrice < buyPrice) {
+      changeBuyPrice = true
+    } else {
+      var tempProfit = sellPrice - buyPrice
+      if (tempProfit > maxProfit) maxProfit = tempProfit
+      changeBuyPrice = false
+    }
+  }
+  return maxProfit
+}
+
+maxStockProfit([32, 46, 26, 38, 40, 48, 42])
